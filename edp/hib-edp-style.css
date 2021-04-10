@@ -291,6 +291,30 @@ label {
     background-image: url(/arquivos/ico-rato.png)
 }
 
+.chat-whats {
+    position: fixed;
+    bottom: 45px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.chat-whats svg{
+    width: 45px;
+    height: 45px;
+    fill: #fff;
+    background: #25D366;
+    border-radius: 100%;
+    padding: 1px;
+}
+
+@media (max-width: 767px){
+    .chat-whats {
+        bottom: 95px;
+        right: 15px;
+    } 
+}
+
 .pageFooter .newsletter-footer {
     background-color: #88ccd8
 }
@@ -849,7 +873,13 @@ label {
         margin-right: 10px
     }
 
-    .pageFooter .middle-footer .bandeiras ul li img,.pageFooter .middle-footer .safe ul li img {
+    .pageFooter .middle-footer .bandeiras ul li img{
+        width: 100%;
+        height: auto;
+        filter: brightness(0) invert(1);
+    }
+
+    .pageFooter .middle-footer .safe ul li img {
         width: 100%;
         height: auto
     }
@@ -921,6 +951,39 @@ label {
     width: 32.25806%
 }
 
+.pageFooter .bottom-footer .bandeiras ul{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pageFooter .bottom-footer .bandeiras ul li{
+ margin: 0 15px;   
+}
+
+.pageFooter .bottom-footer .bandeiras ul li img{
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    opacity: 0.95;
+}
+
+.pageFooter .bottom-footer .bandeiras ul li.ico-custom img,
+.pageFooter .bandeiras ul li.ico-custom img{
+    max-width: 100px;
+    width: 100%;
+    opacity: 0.4;
+}
+
 .pageFooter .bottom-footer .bandeiras:last-child {
     margin-right: 0
 }
@@ -928,6 +991,9 @@ label {
 @media screen and (max-width: 1024px) {
     .pageFooter .bottom-footer .bandeiras img {
         filter:brightness(10)
+    }
+    .pageFooter .bandeiras ul li.ico-custom img{
+        opacity: 1;
     }
 }
 
@@ -1049,7 +1115,7 @@ label {
     background: #f99d1b;
     color: #fff;
     position: fixed;
-    bottom: 20px;
+    bottom: 105px;
     right: 20px;
     cursor: pointer;
     border-radius: 5px;
@@ -3219,9 +3285,41 @@ label {
     font-weight: 700
 }
 
-.shelf li[layout="8560721a-e4c1-4c02-88f5-80fb282febbe"] .brand,.shelf li[layout="8560721a-e4c1-4c02-88f5-80fb282febbe"] .flag,.shelf li[layout="8560721a-e4c1-4c02-88f5-80fb282febbe"] .flagDiscount,.shelf li[layout="8560721a-e4c1-4c02-88f5-80fb282febbe"] .rateProduct {
+.shelf li[layout="8560721a-e4c1-4c02-88f5-80fb282febbe"] .brand,
+.shelf li .flag,
+.shelf li[layout="8560721a-e4c1-4c02-88f5-80fb282febbe"] .flagDiscount,
+.shelf li[layout="8560721a-e4c1-4c02-88f5-80fb282febbe"] .rateProduct {
     display: none
 }
+
+.shelf li .flag.frete-gratis-bravecto-sp,
+.shelf li .flag.frete-gratis-scalibor-p-m-sp{
+    display: block;
+    font-size: 0;
+}
+
+.shelf li .flag.frete-gratis-bravecto-sp::before,
+.shelf li .flag.frete-gratis-scalibor-p-m-sp::before{
+    content: 'Frete Grátis - SP';
+    display: block;
+    color: #fff;
+    background: #ff4c2d;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.45px;
+    padding: 3px 0;
+}
+
+@media (max-width: 1024px) {
+    .shelf li .flag.frete-gratis-bravecto-sp::before,
+    .shelf li .flag.frete-gratis-scalibor-p-m-sp::before{
+        font-size: .6875rem;
+        letter-spacing: normal;
+    }
+}
+
 
 .shelf li[layout="8560721a-e4c1-4c02-88f5-80fb282febbe"] .productInfo {
     width: 100%
@@ -3896,7 +3994,7 @@ h4.vtexIdUI-heading span {
 }
 
 h4.vtexIdUI-heading span:after {
-    content: 'Use uma das opÃƒÂ§ÃƒÂµes abaixo para validar sua identidade e acessar sua conta.';
+    content: 'Use uma das opções abaixo para validar sua identidade e acessar sua conta.';
     font-size: 1.1875rem;
     font-weight: 700;
     color: #494949;
@@ -3927,7 +4025,7 @@ h4.vtexIdUI-heading span:after {
     padding-left: 20px!important
 }
 
-.vtexIdUI .btn-block:before {
+/* .vtexIdUI .btn-block:before {
     content: '';
     width: 20px;
     height: 20px;
@@ -3935,10 +4033,14 @@ h4.vtexIdUI-heading span:after {
     background-image: url(/arquivos/sprit-login.png);
     background-repeat: no-repeat;
     margin-right: 25px
-}
+} */
 
 .vtexIdUI .btn-block i {
     display: none!important
+}
+
+.vtexIdUI .vtexIdUI-providers-list li .btn-block i{
+    display: block !important
 }
 
 body {
@@ -3997,15 +4099,29 @@ body {
 
 #ajaxBusy {
     position: fixed;
+    width: 100%;
+    height: 100%; 
+    background: rgba(0,0,0,.20);
+    z-index: 999999;
+}
+
+#ajaxBusy p{
+    font-size: 0;
+}
+
+#ajaxBusy p:before{
+    content: '';
+    position: fixed;
     top: calc(50% - 25px);
-    left: calc(50% - 25px);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     font-size: 0;
     background-image: url(/arquivos/load-gif.gif);
     background-size: 100%;
-    width: 50px;
-    height: 50px;
-    z-index: 9999;
-    display: none !important;
+    width: 100px;
+    height: 100px;
+    z-index: 9999999;
 }
 
 hr {
@@ -5222,6 +5338,40 @@ body.product .mainProductInfo .product-infos .product-brand .brandName a {
     }
 }
 
+body.product .flag-promocional .flag {
+    display: none;
+} 
+
+body.product .flag-promocional .flag.frete-gratis-bravecto-sp,
+body.product .flag-promocional .flag.frete-gratis-scalibor-p-m-sp{
+    display: block;
+    font-size: 0;
+    margin-bottom: 15px;
+}
+
+body.product .flag-promocional .flag.frete-gratis-bravecto-sp::before,
+body.product .flag-promocional .flag.frete-gratis-scalibor-p-m-sp::before{
+    content: 'Frete Grátis - SP';
+    display: block;
+    color: #fff;
+    background: #ff4c2d;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 700;
+    letter-spacing: 0.45px;
+    padding: 5px 0;
+}
+
+@media (max-width: 1024px) {
+    body.product .flag-promocional .flag.frete-gratis-bravecto-sp::before,
+    body.product .flag-promocional .flag.frete-gratis-scalibor-p-m-sp::before{
+        font-size: .6875rem;
+        letter-spacing: normal;
+    }
+}
+
 body.product .mainProductInfo .priceProduct {
     color: #494949;
     margin-bottom: 20px
@@ -5405,6 +5555,15 @@ body.product .mainProductInfo .chooseProduct {
     margin-bottom: 40px
 }
 
+body.product .mainProductInfo .chooseProduct .sku-selector-container{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+}
+
 body.product .mainProductInfo .chooseProduct ul.Sabor {
     display: -webkit-box;
     display: -moz-box;
@@ -5442,6 +5601,11 @@ body.product .mainProductInfo .chooseProduct ul.Sabor li label.sku-picked,body.p
     background-color: #ee4d32
 }
 
+body.product .mainProductInfo .chooseProduct ul.Tamanho{
+    margin: 15px 0;
+    order: 0;
+}
+
 body.product .mainProductInfo .chooseProduct ul.Tamanho .specification {
     font-weight: 700;
     display: block
@@ -5451,10 +5615,21 @@ body.product .mainProductInfo .chooseProduct ul.Tamanho li {
     display: block
 }
 
+body.product .mainProductInfo .chooseProduct ul.Tamanho select.sku-selector{
+    height: 38px;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 10px;
+    max-width: 250px;
+    width: 100%;
+    border: 1px solid #cbcacc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 body.product .mainProductInfo .chooseProduct ul.Tamanho .skuList {
     width: 100%;
-    border: 1px solid #e8e8e8;
-    border-radius: 5px
 }
 
 body.product .mainProductInfo .chooseProduct ul.Tamanho .skuList input {
@@ -5465,7 +5640,8 @@ body.product .mainProductInfo .chooseProduct ul.Tamanho .skuList label {
     width: 100%;
     display: block;
     padding: 7px 15px;
-    border-top: 1px solid #e8e8e8
+    border-top: 1px solid #e8e8e8;
+    cursor: pointer;
 }
 
 body.product .mainProductInfo .chooseProduct ul.Tamanho .skuList label span {
@@ -5507,6 +5683,7 @@ body.product .mainProductInfo .chooseProduct ul.Tamanho .skuList label:nth-child
 }
 
 body.product .mainProductInfo .chooseProduct ul.Cor {
+    order: 1;
     display: -webkit-box;
     display: -moz-box;
     display: -webkit-flex;
@@ -5583,7 +5760,9 @@ body.product .mainProductInfo .chooseProduct ul.Cor li label {
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    position: relative
+    position: relative;
+    cursor: pointer;
+    margin: 8px 5px;
 }
 
 body.product .mainProductInfo .chooseProduct ul.Cor li label.sku-picked {
@@ -5592,6 +5771,12 @@ body.product .mainProductInfo .chooseProduct ul.Cor li label.sku-picked {
 
 body.product .mainProductInfo .chooseProduct ul.Cor li label.sku-picked:after {
     display: none
+}
+
+body.product .mainProductInfo .chooseProduct ul.Cor li label.item_doesnt_exist.combination_unavaliable{
+    display: none;
+    opacity: 0.35;
+    filter: grayscale(0.5);
 }
 
 body.product .mainProductInfo .chooseProduct ul.Cor li label:after {
@@ -5611,8 +5796,8 @@ body.product .mainProductInfo .chooseProduct ul.Cor li label:after {
 
 body.product .mainProductInfo .chooseProduct ul.Cor li label:before {
     content: '';
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     display: block;
     background: #e2e2e2;
     border-radius: 50%
@@ -6407,6 +6592,110 @@ body.product .economia-de {
 
 body.product .economia-de span.economia {
     color: #f68b1e
+}
+
+body.product .video{
+    height: 90px;
+    width: 150px;
+    margin: 8px auto;
+    display: flex;
+    align-items: center;
+    background: #f99d1b;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid #f68b1e;
+    position: relative;
+}
+
+body.product .video svg {
+    fill: #fff;
+}
+
+body.product .video .thumbnail{
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100%;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    display: none;
+    padding: 5px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+body.product .video:hover svg{
+    opacity: 0.75;
+}
+
+body.product .video:hover .thumbnail{
+    display: block;
+}
+
+
+body.product .bg-shadow{
+    display: none;
+    background: #000;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 501;
+}
+
+body.product .modal-video{
+    display: none;
+    top: 25%;
+    position: fixed;
+    width: 100%;
+    z-index: 501;
+    cursor: pointer;
+}
+
+body.product .modal-video .close{
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    margin-bottom: 20px;
+    right: 5px;
+    top: -25px;
+    cursor: pointer;
+    position: absolute;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+}
+
+body.product .modal-video .close:before{
+    content: 'X';
+}
+
+body.product .modal-video .content{
+    position: relative;
+    top: 25%;
+    margin: 0 auto;
+    display: block;
+    max-width: 560px;
+    width: 100%;
+    padding: 10px;
+}
+
+body.product .modal-video iframe{
+    width: 100%;
+    max-width: 560px;
+}
+
+@media (max-width: 414px){
+    body.product .modal-video iframe{
+        padding: 10px;
+        height: 210px;
+    }
 }
 
 .productBuyTogether {
@@ -10089,3 +10378,91 @@ body.error404 .wrap-all .pageError .info>p>span {
         margin-right: 0
     }
 }
+
+
+/* ACEITE DE TERMOS */
+.info-protecao {
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 999999;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, .26);
+    padding: 15px 0;
+    transition: height 1s;
+}
+
+.info-protecao.isActive {
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: height 1s;
+}
+
+.info-protecao-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.info-protecao-item {
+    margin-right: 15px;
+}
+
+.info-protecao-text {
+    max-width: 750px;
+}
+
+.info-protecao-text {
+    color: #696969;
+    font-size: .875rem;
+    line-height: 21px;
+}
+
+.info-protecao-text a{
+    color: #f99d1b;
+    font-weight: 700;
+}
+
+.info-protecao-aceite {
+    background: #449bbd;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: .6px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all ease-out 0.2s;
+    position: relative;
+    width: 250px;
+}
+
+.info-protecao-aceite:hover {
+    background: #32728b;
+}
+
+@media (max-width:1025px) {
+    .info-protecao-container{
+        flex-direction: column;
+    }
+    .info-protecao-item {
+        margin-right: 0;
+    }
+    .info-protecao-aceite {
+        margin-top: 15px;
+    }
+}
+
